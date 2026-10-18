@@ -1,9 +1,10 @@
 import './App.css'
+import TestComponent from './TestComponent'
 
 function App() {
 
   return (
-    <h1>Siam Ahmed</h1>
+    <TestComponent />
   )
 }
 
