@@ -6,6 +6,7 @@ function App() {
   return (
     <>
       <Card name="Siam" age = {22} /> 
+      <Card name="Fahim" age = {10} /> 
     </>
   )
 }
