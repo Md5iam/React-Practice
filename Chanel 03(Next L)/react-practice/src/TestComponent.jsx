@@ -7,3 +7,7 @@ const TestComponent = () => {
 };
 
 export default TestComponent;
+
+// export default function TestComponent (){
+//   return <h1>This is from test component</h1>
+// }
