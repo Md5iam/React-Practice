@@ -7,7 +7,7 @@ function App() {
   const users = [
     {name : "Siam" , age : 20},
     {name : "Fahim" , age : 10},
-    {name : "Siam" , age : 50},
+    {name : "Rahim" , age : 50},
     {name : "Sakib" , age : 45},
   ];
 

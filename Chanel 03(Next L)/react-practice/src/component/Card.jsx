@@ -5,7 +5,7 @@ import "./Card.css"
 // Must use inside react component
 
 export default function Card({ name , age}){
-  const [member, setMember] = useState("Hooks");
+  const [member, setMember] = useState("");
 
   const clickHandler = (name) =>{
     setMember(name);
@@ -16,6 +16,7 @@ export default function Card({ name , age}){
       <div   onClick={() => clickHandler(name)} className="box">
         <p className="one">{name} is {age} years old</p>
         <p className="one">He is a big boy</p>
+        {member &&  <p>Greeting {member}</p> }
     </div>
   );
 }
