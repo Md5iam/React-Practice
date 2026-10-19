@@ -1,5 +1,6 @@
 import './App.css'
 import Card from './component/Card'
+import Counter from './component/Counter';
 
 function App() {
 
@@ -17,11 +18,14 @@ function App() {
         <Card name = {users[2].name} age = {users[2].age} />
         <Card name = {users[3].name} age = {users[3].age} /> */}
 
-    {
+    {/* {
       users.filter(member => member.age >= 18 )
       .sort((a, b) => (b.age - a.age))
       .map((member) => (<Card name = {member.name}  age = {member.age}/>))
-    }
+    } */}
+
+    <Counter />
+
 
     </>
   )
