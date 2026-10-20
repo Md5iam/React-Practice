@@ -1,7 +1,4 @@
-import { useState } from "react";
-
-export default function Counter(){
-  const [count, setCount] = useState(0);
+export default function Counter({count , setCount}){
 
   const increaseby5 = () =>{
     setCount(count+5);
@@ -12,7 +9,6 @@ export default function Counter(){
       <button onClick={()=> setCount(count + 1)} >IncrementBy1</button> <br /> <br />
       <button onClick={()=> increaseby5()}>IncrementBy5</button> <br /> <br />
       <button onClick={()=> setCount(count - 1)}>Deccrement</button> <br />
-      <p>{count}</p>
     </div>
   );
 }
