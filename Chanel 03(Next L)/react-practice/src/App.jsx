@@ -1,16 +1,21 @@
+import { useEffect, useState } from 'react'
 import './App.css'
-import Counter from './component/Counter';
-import Display from './component/Display';
-import CounterProvider from './providers/counter.provider'
+
+// useEffect synchronizes React with external systems after rendering to keep rendering pure
 
 function App() {
+  const [count , setCount] = useState(0);
+  const [countSecond , setCountSecond] = useState(0);
+
+  useEffect(()=>{
+    console.log("Siam Ahmed");
+  },[count]);
 
   return (
-    <CounterProvider>
-      <p>Parent Component</p>
-      <Counter />
-      <Display />
-    </CounterProvider>
+    <>
+      <button onClick={()=> setCount(count+1)}> Incremement({count})</button>
+      <button onClick={()=> setCountSecond(count+1)}> IncremementSecond({countSecond})</button>
+    </>
   )
 }
 
