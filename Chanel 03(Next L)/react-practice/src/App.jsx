@@ -8,6 +8,7 @@ function App() {
 
   return (
     <>
+      <p>Parent</p>
       <Counter count={count} setCount={setCount} />
       <Display count={count} />
     </>

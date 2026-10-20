@@ -1,8 +1,12 @@
 import "./Card.css"
+import NestedDisplay from "./NestedDisplay";
 
 export default function Display({ count }){
   return(
-    <p className="box1"> The count is : {count}</p>
+    <div className="box1">
+      <p>Child</p>
+      <NestedDisplay count={count} />
+    </div>
   );
 }
 
