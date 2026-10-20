@@ -4,17 +4,19 @@ import './App.css'
 // useEffect synchronizes React with external systems after rendering to keep rendering pure
 
 function App() {
-  const [count , setCount] = useState(0);
-  const [countSecond , setCountSecond] = useState(0);
+  const [second , setSecond] = useState(0);
 
   useEffect(()=>{
-    console.log("Siam Ahmed");
-  },[count]);
+    const timerId = setInterval(()=>{
+      setSecond((prev) => prev+1);
+    } , 1000)
+
+    return ()=> clearInterval(timerId);
+  },[]);
 
   return (
     <>
-      <button onClick={()=> setCount(count+1)}> Incremement({count})</button>
-      <button onClick={()=> setCountSecond(count+1)}> IncremementSecond({countSecond})</button>
+    <p>The second is : {second}</p>
     </>
   )
 }
