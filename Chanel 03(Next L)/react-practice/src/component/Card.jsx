@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Card.css"
 
-export default function Card({ name , age}){
+export default function Card({ name , email}){
   const [member, setMember] = useState("");
 
   const clickHandler = (name) =>{
@@ -11,8 +11,8 @@ export default function Card({ name , age}){
 
   return(
       <div   onClick={() => clickHandler(name)} className="box">
-        <p className="one">{name} is {age} years old</p>
-        <p className="one">He is a big boy</p>
+        <p className="one">The name is {name}</p>
+        <p className="one">The mail is {email}</p>
         {member &&  <p>Greeting {member}</p> }
     </div>
   );

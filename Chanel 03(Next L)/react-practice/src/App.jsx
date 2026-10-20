@@ -1,23 +1,32 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Card from './component/Card';
 
-// useEffect synchronizes React with external systems after rendering to keep rendering pure
 
 function App() {
-  const [second , setSecond] = useState(0);
+  const [data, setData] = useState([]);
+  const [isLoading , setIsLoading] = useState(true);
 
   useEffect(()=>{
-    const timerId = setInterval(()=>{
-      setSecond((prev) => prev+1);
-    } , 1000)
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res)=> res.json())
+    .then((data)=> setData(data))
+    .finally(()=>{
+      setIsLoading(false);
+    })
+  } , []);
 
-    return ()=> clearInterval(timerId);
-  },[]);
-
-  return (
-    <>
-    <p>The second is : {second}</p>
-    </>
+  if ( isLoading){
+    return <p>Loading...</p>
+  }
+  return ( 
+    <div>
+      {
+        data.map((user)=>(
+          <Card name={user.name} email= {user.email}></Card>
+        ))
+      }
+    </div>
   )
 }
 
