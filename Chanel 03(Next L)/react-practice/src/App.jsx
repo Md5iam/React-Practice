@@ -6,17 +6,13 @@ import Counter from './component/Counter';
 function App() {
   const[name , setName] = useState("");
   const[age , setAge] = useState("");
-  const[members , setMembers] = useState([
-    {name : "Siam" , age : 20},
-    {name : "Fahim" , age : 10},
-    {name : "Rahim" , age : 50},
-    {name : "Sakib" , age : 45},
-  ]);
+  const[members , setMembers] = useState([]);
 
 
   const handleSubmit = (e)=>{
     e.preventDefault();
-    setMembers({name , age})
+    // setMembers([ ...members, {name , age}])
+    setMembers((prev)=> [...prev , {name , age}] )
   }
 
   return (
@@ -24,6 +20,7 @@ function App() {
 
     <form onSubmit={handleSubmit}>
       <input onChange={(e)=> setName(e.target.value)} type="text" /> <br />
+      <input onChange={(e)=> setAge(e.target.value)} type="number" /> <br />
       <button type="text">Submit</button>
     </form> 
 
