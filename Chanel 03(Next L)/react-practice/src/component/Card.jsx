@@ -1,9 +1,6 @@
 import { useState } from "react";
 import "./Card.css"
 
-// Must use hooks(state) code in top level in component
-// Must use inside react component
-
 export default function Card({ name , age}){
   const [member, setMember] = useState("");
 
