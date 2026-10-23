@@ -10,6 +10,17 @@ const LocationModal = ({ onClose }) => {
     console.log(value);
   };
 
+  const handleGeoLocations = ()=>{
+    navigator.geolocation.getCurrentPosition((positions)=>{
+        const {latitude, longitude} = positions.coords
+        console.log({latitude, longitude});
+    },(error)=>{
+        console.log(error);
+    },{
+        timeout : 10000
+    });
+  }
+
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-gray-950/60">
       <div className="p-5 rounded-2xl w-[400px] bg-gray-100 shadow-2xl">
@@ -42,6 +53,7 @@ const LocationModal = ({ onClose }) => {
             <div className="">
               <button
                 type="button"
+                onClick={handleGeoLocations}
                 className="text-lg w-full font-medium hover:scale-105 transition-all delay-500 bg-blue-500 px-5 cursor-pointer py-1 rounded-4xl text-gray-100"
               >
                 Use My Locations
