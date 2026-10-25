@@ -1,33 +1,57 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 import { getGeolocation } from "../services/get-geoLocation";
+import { useNavigate } from "react-router";
 
 const LocationModal = ({ onClose }) => {
   const [city, setCity] = useState("");
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+  const goToPage = (location) => {
+    navigate("/weather", { state: { location } });
+    console.log(location);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const cityValue = city.trim();
     // console.log(cityValue);
 
-    try{
+    if (!cityValue) {
+      setError("Enter the city name first!!");
+      return;
+    }
+    try {
       const location = await getGeolocation(cityValue);
-      console.log(location);
-    }catch(error){
-      console.log( "Error message :", error);
+      if (!location) {
+        setError("Geocoding request failed!");
+      }
+      goToPage(location);
+    } catch (error) {
+      setError(error);
     }
   };
 
-  const handleGeoLocations = ()=>{
-    navigator.geolocation.getCurrentPosition((positions)=>{
-        const {latitude, longitude} = positions.coords
-        console.log({latitude, longitude});
-    },(error)=>{
-        console.log(error);
-    },{
-        timeout : 10000
-    });
-  }
+  const handleGeoLocations = () => {
+    if (!navigator.geolocation) {
+      setError("Geo locations not found!");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (positions) => {
+        const { latitude, longitude } = positions.coords;
+        // console.log({latitude, longitude});
+        goToPage({ name: "Current Locations", lat: latitude, lon: longitude });
+      },
+      (error) => {
+        setError(error.message);
+      },
+      {
+        timeout: 10000,
+      },
+    );
+  };
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-gray-950/60">
@@ -68,6 +92,9 @@ const LocationModal = ({ onClose }) => {
               </button>
             </div>
           </form>
+        </div>
+        <div className="text-center">
+          {error && <p className="text-red-600 text-md font-medium">{error}</p>}
         </div>
       </div>
     </div>
