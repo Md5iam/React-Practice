@@ -7,7 +7,7 @@ export default function Home(){
   return(
     <div>
 
-        <div className="text-center">
+        <div className="text-center"> 
           <h1 className="text-6xl text-blue-300 font-bold">
             NextLevel <span className="text-blue-400">Weather</span>
           </h1>
