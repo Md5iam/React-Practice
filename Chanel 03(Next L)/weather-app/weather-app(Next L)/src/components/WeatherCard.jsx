@@ -1,6 +1,13 @@
 import { MapPin } from "lucide-react";
+import StatCard from "./StatCard";
 
-export default function WeatherCard({place , weather}) {
+export default function WeatherCard({ place, weather }) {
+  const stats = [
+    { icon: "x", label: "Feels like", value: `${weather?.feelsLike} °C` },
+    { icon: "y", label: "Humidity", value: `${weather?.humidity}%` },
+    { icon: "z", label: "Wind speed", value: `${weather?.windSpeed} km/h` },
+  ];
+
   return (
     <div className="shadow-2xl rounded-2xl p-5">
       <div className="space-y-3">
@@ -21,26 +28,13 @@ export default function WeatherCard({place , weather}) {
             {weather?.description}
           </p>
         </div>
-        <div className="flex items-center justify-between">
-          <div className="rounded-2xl shadow-2xl p-4 text-center">
-            <h3 className="text-lg text-purple-900 font-bold">Feels Like</h3>
-            <p className="text-4xl text-purple-800 font-extrabold">
-              {weather?.feelsLike}
-            </p>
-          </div>
-          <div className="rounded-2xl shadow-2xl p-4 text-center">
-            <h3 className="text-lg text-purple-900 font-bold">Humidity</h3>
-            <p className="text-4xl text-purple-800 font-extrabold">
-              {weather?.humidity}
-            </p>
-          </div>
-          <div className="rounded-2xl shadow-2xl p-4 text-center">
-            <h3 className="text-lg text-purple-900 font-bold">Wind Speed</h3>
-            <p className="text-4xl text-purple-800 font-extrabold">
-              {weather?.windSpeed}
-            </p>
-          </div>
+
+        <div className="grid grid-cols-3 gap-4">
+          {stats.map((s) => (
+            <StatCard key={s.icon} s={s} />
+          ))}
         </div>
+        
       </div>
     </div>
   );
