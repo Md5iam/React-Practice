@@ -33,7 +33,7 @@ export default function WeatherType({ weather, place }) {
         <WeatherLottie
           kind="weather"
           name={weather?.icon}
-          className="my-1 w-[270px] h-[270px] max-[480px]:w-[190px] max-[480px]:h-[190px]"
+          className="my-1 w-[271px] h-[270px] max-[480px]:w-[190px] max-[480px]:h-[190px]"
         />
 
         <h3
