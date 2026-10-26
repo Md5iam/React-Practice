@@ -25,6 +25,7 @@ export default function Weather(){
   return(
         <div>
             <div className="grid md:grid-cols-2 gap-5">
+
                 <div className="space-y-3">
                     <div className="shadow-2xl rounded-2xl p-5">
                     <div className="space-y-3">
@@ -50,10 +51,22 @@ export default function Weather(){
                                  <h3 className="text-lg text-purple-900 font-bold">Wind Speed</h3>
                            <p className="text-4xl text-purple-800 font-extrabold">{weather?.windSpeed}</p>
                             </div>
-
                         </div>
                     </div>
+                  </div>
                 </div>
+
+                <div className="shadow-2xl flex  flex-col items-center justify-between space- rounded-2xl p-5">
+                  <div className="">
+                    <h2 className="text-blue-950  font-bold text-xl">Live in {place.name}</h2>
+                  </div>
+                  <div className="flex items-center justify-center">
+                     <p className="text-4xl text-blue-900 font-extrabold">{weather?.description}</p>
+                  </div>
+
+                  <div className="flex items-center justify-center">
+                   <span className="rounded-full border-2 font-medium text-lg border-purple-400 p-2">Feel's Like : {weather?.feelsLike}</span>
+                  </div>
                 </div>
 
             </div>
